@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Your Guide - Guide Me Now</title>
+    <style>
+        /* General Body and Font Styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('banner.jpg'); /* Add the background image here */
+            background-size: cover; /* Cover the entire page */
+            background-position: center; /* Center the background */
+            margin: 0;
+            padding: 0;
+            color: #333;
+            height: 100vh; /* Full viewport height */
+        }
+
+        /* Home Button */
+        .home-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background-color: #2980b9;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .home-button:hover {
+            background-color: #1f5f8a;
+        }
+
+        /* Container for Centering Form */
+        .container {
+            max-width: 700px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Title */
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        /* Form Layout */
+        .booking-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* Form Field Styles */
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 1.1em;
+            margin-bottom: 5px;
+        }
+
+        input, select, textarea {
+            padding: 10px;
+            font-size: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        /* Select Guide Section with Images */
+        .guide-selection {
+            display: flex;
+            gap: 20px;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .guide-option {
+            text-align: center;
+            width: 30%;
+        }
+
+        .guide-option img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-option img:hover {
+            transform: scale(1.05);
+        }
+
+        .guide-option input[type="radio"] {
+            display: none;
+        }
+
+        .guide-option label {
+            display: block;
+            margin-top: 10px;
+            font-size: 1.1em;
+            cursor: pointer;
+        }
+
+        /* Submit Button */
+        .btn {
+            padding: 15px;
+            background-color: #27ae60;
+            color: white;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .btn:hover {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+    <!-- Home Button -->
+    <a href="index.html" class="home-button">Home</a>
+
+    <div class="container">
+        <h1>Book Your Guide for Exploring Nepal</h1>
+        
+        <form action="submit-form.html" method="POST" class="booking-form">
+            <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" required placeholder="Enter your full name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" required placeholder="Enter your email address">
+            </div>
+
+            <div class="form-group">
+                <label>Choose a Guide</label>
+                <div class="guide-selection">
+                    <div class="guide-option">
+                        <input type="radio" id="guide1" name="guide" value="guide1" required>
+                        <label for="guide1">
+                            <img src="guide1.jpeg" alt="Guide 1 - Trekking Specialist">
+                            <p>Guide 1 - Trekking Specialist</p>
+                        </label>
+                    </div>
+                    <div class="guide-option">
+                        <input type="radio" id="guide2" name="guide" value="guide2" required>
+                        <label for="guide2">
+                            <img src="guide2.jpeg" alt="Guide 2 - Cultural Expert">
+                            <p>Guide 2 - Cultural Expert</p>
+                        </label>
+                    </div>
+                    <div class="guide-option">
+                        <input type="radio" id="guide3" name="guide" value="guide3" required>
+                        <label for="guide3">
+                            <img src="guide3.jpeg" alt="Guide 3 - Wildlife Enthusiast">
+                            <p>Guide 3 - Wildlife Enthusiast</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="dates">Preferred Dates</label>
+                <input type="text" id="dates" name="dates" required placeholder="e.g., March 10 - March 20">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Additional Requests</label>
+                <textarea id="message" name="message" rows="4" placeholder="Any special requests or details"></textarea>
+            </div>
+
+            <button type="submit" class="btn">Book Now</button>
+        </form>
+    </div>
+</body>
+</html>

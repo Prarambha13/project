@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GuideMeNow</title>
+
+    <!-- Font Awesome for icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* General Body Styling */
+        body {
+            margin: 0;
+            font-family: 'Poppins', Arial, sans-serif;
+            color: #fff;
+            background-color: #0e0e0e;
+        }
+
+        /* Background Styling */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('banner.jpg') no-repeat center center/cover;
+            z-index: -1;
+            filter: brightness(0.7); /* Dim the background image for readability */
+        }
+
+        /* Navigation Menu Styling */
+        .my_menu {
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent background */
+            display: inline-block;
+            margin: 20px auto;
+            padding: 12px 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+        }
+
+        .menu {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .menu li {
+            padding: 12px 20px;
+            position: relative;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .menu li a {
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        .menu li:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1); /* Add a slight zoom effect */
+        }
+
+        .menu li ul {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            list-style-type: none;
+            margin: 0;
+            padding: 10px;
+            border-radius: 8px;
+            top: 100%;
+            left: 0;
+            min-width: 160px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .menu li:hover > ul {
+            display: block;
+        }
+
+        .menu li ul li a:hover {
+            color: #ffcc00;
+        }
+
+        /* Logout Button Styling */
+        .logout-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            color: white;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .logout-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 100, 0, 0.6);
+        }
+
+        /* Hero Section Styling */
+        .hero-section {
+            text-align: center;
+            padding: 120px 20px;
+            color: #fff;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero-section p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+        }
+
+        .hero-section a {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #ff6a00, #ee0979);
+            color: white;
+            text-transform: uppercase;
+            font-weight: bold;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+
+        .hero-section a:hover {
+            background: linear-gradient(45deg, #ee0979, #ffcc00);
+            transform: translateY(-5px);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+        }
+
+        /* Featured Destinations Styling */
+        .featured-destinations {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .destination {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .destination img {
+            width: 100%;
+            border-bottom: 3px solid #ff6a00;
+        }
+
+        .destination h3 {
+            font-size: 1.5rem;
+            margin: 15px 0;
+        }
+
+        .destination p {
+            padding: 0 15px 20px;
+            font-size: 1rem;
+        }
+
+        .destination:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Testimonials */
+        .testimonials div {
+            width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            margin: 0 auto 20px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navigation Menu -->
+    <div class="my_menu">
+        <ul class="menu">
+            <li><a href="#">Home</a></li>
+            <li>
+                <a href="#">Tour <i class="fa-solid fa-caret-down"></i></a>
+                <ul>
+                    <li><a href="Kathmandu.html">Kathmandu</a></li>
+                    <li><a href="Pokhara.html">Pokhara</a></li>
+                    <li><a href="mustang.html">Mustang</a></li>
+                </ul>
+            </li>
+            <li><a href="aboutus.html">About us</a></li>
+            <li><a href="contactus.html">Contact us</a></li>
+        </ul>
+    </div>
+
+    <!-- Logout Button -->
+    <button class="logout-btn" onclick="window.location.href='loginpage.html'">Logout</button>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h1>Discover Nepal with the Best Guides</h1>
+        <p>Plan your journey to Nepal’s breathtaking destinations with experienced local guides.</p>
+        <a href="guide.html">Book a Guide and Discover Nepal’s Hidden Gems</a>
+    </section>
+
+    <!-- Featured Destinations -->
+    <section>
+        <h2>Popular Destinations</h2>
+        <div class="featured-destinations">
+            <div class="destination">
+                <img src="kathmandu.jpg" alt="Kathmandu">
+                <h3>Kathmandu</h3>
+                <p>Explore temples and ancient culture.</p>
+            </div>
+            <div class="destination">
+                <img src="pokhara.jpg" alt="Pokhara">
+                <h3>Pokhara</h3>
+                <p>Witness serene lakes and mountain views.</p>
+            </div>
+            <div class="destination">
+                <img src="mustang.jpg" alt="Mustang">
+                <h3>Mustang</h3>
+                <p>Discover mystical landscapes.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section>
+        <h2>Why Choose Us?</h2>
+        <ul>
+            <li>✅ Certified and experienced guides</li>
+            <li>✅ Affordable and flexible packages</li>
+            <li>✅ 24/7 support for travelers</li>
+            <li>✅ Customizable itineraries</li>
+        </ul>
+    </section>
+
+    <!-- Customer Testimonials -->
+    <section>
+        <h2>What Our Customers Say</h2>
+        <div>
+            <p>“Amazing service! Our guide made our trip to Nepal unforgettable.”</p>
+            <strong>- Sarah M.</strong>
+        </div>
+        <div>
+            <p>“I felt safe and cared for the entire time. Highly recommend!”</p>
+            <strong>- John D.</strong>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+        <h2>Get in Touch</h2>
+        <p>Email: info@guidemenow.com</p>
+        <p>Phone: +977-123-456-789</p>
+    </section>
+</body>
+
+</html>
